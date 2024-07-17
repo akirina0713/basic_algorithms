@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>   //vector 是c++的一种容器，可以随时调整数组的长度
 using namespace std;
-        //假发
+        //加法
 
 //C=A+B
 vectot<int>add(vector<int>&A, vector<int>&B)//直接引用，将数组copy一遍 提高效率
