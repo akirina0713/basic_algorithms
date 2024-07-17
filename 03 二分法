@@ -38,4 +38,17 @@ int bsearch_2(int l, int r)
     模板二要防止死循环：当mid = l + r >> 1时，加入l = r - 1当判断mid满足性质在左半区会更新为l = mid;
     而mid = (r - 1 + r)/2 = r - 0.5 = r - 1 = l(向下取整)，则更新完仍然是l = r- 1没变化会死循环
 
-
+    //浮点数二分
+    bool check(double x) {/* ... */} // 检查x是否满足某种性质
+    
+    double bsearch_3(double l, double r)
+    {
+        const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
+        while (r - l > eps)
+        {
+            double mid = (l + r) / 2;
+            if (check(mid)) r = mid;
+            else l = mid;
+        }
+        return l;
+    }
