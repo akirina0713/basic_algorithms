@@ -1,0 +1,46 @@
+/*输入一个 n行 m列的整数矩阵，再输入 q个操作，每个操作包含五个整数 x1,y1,x2,y2,c，其中 (x1,y1)和 (x2,y2)表示一个子矩阵的左上角坐标和右下角坐标。每个操作都要将选中的子矩阵中的每个元素的值加上 c
+
+请你将进行完所有操作后的矩阵输出。
+输入格式
+第一行包含整数 n,m,q。
+接下来 n 行，每行包含 m个整数，表示整数矩阵。接下来 q 行，每行包含 5个整数 x1,y1,x2,y2,c，表示一个操作。
+输出格式
+共 n行，每行 m个整数，表示所有操作进行完毕后的最终矩阵。*/
+#include<iostream>
+using namespace std;
+const int N=100010;
+int n,m,q;
+int a[N][N],b[N][N];
+void insert(int x1,int y1,int x2,int y2)
+{
+  b[x1][y1]+=c;
+  b[x2+1][y1]-=c;
+  b[x1][y2+1]-=c;
+  b[x2+1][y2+1]+=c;
+}
+
+itn main()
+{
+  scanf("%d%d%d",&n,&m,&q);
+  for(int i=1;i<=n;i++)
+      for(int j=1;j<=m;j++)
+        scanf("%d",&a[i][j]);
+  for(int i=1;i<=n;i++)
+    for(int j=1;j<=n;j++)
+        insert(i,j,i,j,a[i][j]);
+  while(q--)
+  {
+    int x1,y1,x2,y2;
+    cin>>x1>>y1>>x2>>y2>>c;
+    insert(x1,y1,x2,y2,c)
+  }
+  for(int i=1;i<=n;i++)
+    for(int j=1;j<=n;j++)
+        b[i][j]+=b[i-1][j]+b[i][j-1]-[b-1][j-1];  //前缀和
+    for (int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=n;j++) printf("%d",b[i][j]);
+        puts("");
+    }      
+  return 0;
+}
