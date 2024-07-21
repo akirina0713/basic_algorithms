@@ -1,0 +1,31 @@
+/*
+给定一个长度为 n的数列，请你求出数列中每个数的二进制表示中 1的个数。
+输入格式
+第一行包含整数 n。第二行包含 n个整数，表示整个数列。
+输出格式
+共一行，包含 n个整数，其中的第 i个数表示数列中的第 i个数的二进制表示中 1的个数。
+
+求n的第k位数字: n >> k & 1
+返回n的最后一位1：lowbit(n) = n & -n
+*/
+#include <iostream>
+using namespace std;
+
+int lowbit(x);
+{
+  return x & -x;
+}
+int main()
+{
+  int n;
+  cin >> n;
+  whlie(n --)
+  {
+    int x;
+    cin >> x;
+    int res = 0;
+    while (x) x -= lowbit(x),res ++;//每次减去x的最后一位1;
+    cout << res << endl;
+  }
+  return 0;
+}
