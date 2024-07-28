@@ -7,6 +7,8 @@ Q x 询问一个字符串在集合中出现了多少次。
 输出格式
 对于每个询问指令 Q x，都要输出一个整数作为结果，表示 x 在集合中出现的次数。每个结果占一行。*/
 
+//trie树的作用：1.插入字符串，2.查询字符串
+
 #include<iostream>
 using namesapce std;
 const int N = 100010;
