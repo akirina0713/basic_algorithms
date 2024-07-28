@@ -4,11 +4,11 @@ int Get_next(char s[], int length, int *ne[])    //求next数组的值
 {
   if (m == 1)  return 0;
   int ne[length];
-  ne[0] = 0;
-  ne[1] = 1;
+  ne[1] = 0;
+  ne[2] = 1;
   //i表示当前要求next值的位置
   //cn表示当前要和前一个字符比对的下标 
-  int i = 3 ,cn = 1;
+  int i = 2 ,cn = 1;
   while(i < m)
   {
     if(s[i] == s[cn]) ne[i ++] = ++ cn;
