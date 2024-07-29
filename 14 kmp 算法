@@ -13,7 +13,7 @@ int Get_next(char s[], int length, int *ne[])    //求next数组的值
   {
     if(s[i] == s[cn]) ne[i ++] = ++ cn;
     else if(cn > 0) cn = ne[cn];
-    else ne[i++] = 0;
+    else ne[i++] = 1;
   }
 }
 
