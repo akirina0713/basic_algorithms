@@ -2,7 +2,7 @@ const int N = 10010;
   
 int Get_next(char s[], int length, int *ne[])    //求next数组的值
 {
-  if (m == 1)  return 0;
+  if (length == 1)  return 0;
   int ne[length];
   ne[1] = 0;
   ne[2] = 1;
