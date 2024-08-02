@@ -4,3 +4,61 @@
 第二行输入 N 个整数 A1～AN。
 输出格式
 输出一个整数表示答案。*/
+
+#include<iostream>
+#include<algotirhm>
+using namespace std;
+
+const int N = 100010, M = 31 * N;
+
+int n;
+int a[N];
+int son[M][2], idx;
+
+void insert(int x)
+{
+  int p = 0;
+  for(int i = 30; i >= 0; i --)
+    {
+      int u = x >> i & 1; //  // 取出当前位的二进制数   0 or 1  从最高位开始
+      if(!son[p][u]) son[p][u] = ++ idx;  //如果不存在该节点，则创建新节点     新节点编号为 idx + 1
+        p = son[p][u];
+    }
+}
+
+int query(int x)
+{
+    //p = 0,指向根节点 res = 0; 保存与 x 异或结果最大的那个数
+  int p = 0, res = 0;
+  for(int i = 30; i >= 0; i--)
+    {
+      int u = x >> i & 1;
+        //如果树中能走到 !u，就走到!u   如： 当前x的二进制位为 1 则 与其异或更大的值需为 0 即 !u 
+      if(son[p][!u])
+       {
+         p = son[p][!u];
+         res = res * 2 + !u;
+       }
+      else 
+        {
+          p = son[p][u];
+          res = res * 2 + u;
+        }
+    }
+  returen res;
+}
+
+int main()
+{
+  scanf("%d", &n);
+  for(int i = 0; i < n; i++) scanf("%d", &a[i]);
+  int res = 0;
+  for(int i = 0; i < n; i++)
+    {
+      insert(a[i]);
+      int t = query(a[i]);
+      res = max(res, a[i] ^ t);
+    }
+  printf("%d", res);
+  return 0;
+}
