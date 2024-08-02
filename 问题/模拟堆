@@ -28,7 +28,7 @@ int heap[N], ph[N], hp[N], size;//size 是堆的长度，下标从1开始   ph�
 
 void heap_swap(int a, int b)
 {
-  swap(ph[hp[a]], ph[hp[b]])  //ph存储的是第k个插入点在堆中的下标，hp是堆中的k个点是第x个插入的点
+  swap(ph[hp[a]], ph[hp[b]])  //ph存储的是第k个插入点在堆中的下标，hp是堆中的k个点是第x个插入的点   ph  point 指向 heap  hp   heap 指向 point
   swap(hp[a], hp[b]);
   swap(heap[a], heap[b]);
 }
