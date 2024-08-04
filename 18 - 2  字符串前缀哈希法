@@ -8,4 +8,42 @@
 输出格式
 对于每个询问输出一个结果，如果两个字符串子串完全相同则输出 Yes，否则输出 No。每个结果占一行。*/
 
-//先将每一个前缀的哈希值求出来
+// 使用场景： 两个字符串的子串是否相同
+//先将每一个前缀的哈希值求出来      运用了前缀和的思想
+//只要能快速求出s[l1, r1] 和 s[l2,r2]对应的字符串的哈希值h[s[l1, r1]] h[s[l2, r2]]，并判断是否相等。就能得出l1, r1 l2,r2对应的字符串是否相同
+//用到了 p 进制  将字符串转换成一个P进制的数字，例如 131 进制的数字。这个值看做字符串的哈希值h。
+
+#include<iostream>
+using namespace std;
+
+typedef unsigned long long ULL;
+
+const int N = 100010, P = 131;   //P 一般取 131 比较好，不易出现重复现象 
+int n, m;
+char str[N];
+ULL h[N], p[N];   //用p[N] 来存储  pow(P, r - l + 1)
+
+ULL get(int l, int r)
+{
+  return h[r] - h[l-1] * p[r - l + 1];  // l 到 r 之间的哈希值     
+  //区间和公式的理解: ABCDE 与 ABC 的前三个字符值是一样，只差两位，乘上P的二次方把 ABC 变为 ABC00，再用 ABCDE - ABC00 得到 DE 的哈希值。
+}
+
+int main()
+{
+  scanf("%d%d%s", &n, &m, str + 1);  //str 的下标从 1 开始
+  p[0] = 1;
+  for(int i = 1; i <= n; i++)
+  {
+    p[i] = p[i - 1] * P;
+    h[i] = h[i-1] * P + str[i];  //类似前缀和
+  }
+  while(m --)
+  {
+    int l1, r1, l2, r2;
+    scanf("%d%d%d%d", &l1, &r1, &l2, &r2);
+
+    if(get(l1, r1) == get(l2, r2))  puts("Yes");
+    else puts("No");
+  }
+}
