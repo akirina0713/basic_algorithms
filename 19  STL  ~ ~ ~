@@ -1,0 +1,85 @@
+/* vector  变长数组     //数组长度可以动态变化  倍增的思想  #include <vector>  
+
+      vector<int> a;                         //支持随机寻址  支持比较运算 按照字典序的比较方法
+      vector<int> a(10 , 3);                    // vector 的定义 :定义一个长度为 10 的vector,且每一个数都是 3
+      vector<int> a[10];                       //定义了 10 个vector
+      a.size();                              //返回 a 中元素个数  所有容器都有 size() 函数 时间复杂度为 O(1)
+      a.empty();                            //返回 a 是否为空  返回 true or false 
+      a.clear();                           //清空
+      a.front(); / a.back();                   //返回第一个 / 最后一个数
+      a.push_back(); / a.pop_back()                //向 a 最后插入一个数 / 把 a 的最后一个数删除
+      a.begin(); /a.end();                    //迭代器  第零个数 / 最后一个数的后面一个数
+      for(vector<int>::iterator i = a.begin(); i != a.end(); i++) 
+      for(auto i = a.begin(); i != a.end(); i++)              //用迭代器进行循环
+      for(auto x : a)             //c ++ 中的范围遍历 
+
+pair<int, int>  存储二元组  //类似一个数组中每一个p[]可以存储两个属性  #include <utility>
+
+      pair<int, string>p;                     //支持比较运算  按照字典序的比较方法或者以 first 为第一关键字,以second 为第二关键字 (字典序)
+      pair<int, pair<int, int>>p;               //即可存储3种属性
+      p = make_pair(1, "xby");              //构造 pair
+      p = {1, "xby"};                 //构造 pair
+      p.first();                  //第一个元素
+      p.second();               //第二个元素
+
+string  字符串  
+
+      size();    //同上
+      empty();
+      clear();  
+      substr()            //substr(3, 2); 返回下标从 3 开始 长度为 2 的字串 也可省略 2 即从下标为 3 开始返回整个字串
+      c_str()          // 返回当前字符串的首地址
+      
+queue  队列    //没有clear函数   #include <queue>
+
+      size();
+      empty();
+      push();                    //往队尾插入元素
+      front();                  //返回对头元素  
+      back();                  //返回队尾元素
+      pop();                  //弹出队头元素
+      q = queue<int>();     //通过重新构造来实现清空queue   #include <queue>
+      
+priority_queque  优先队列(堆)    //默认大根堆  
+
+      priority_queue<int> heap;  //加上  #include <vector>   然后  prority_queue<int, vector<int>, great<int>>heap; 来实现小根堆
+      push();       //往堆里插入元素  可以通过 heap.push(- x); 来实现小根堆
+      top();       // 返回堆顶元素
+      pop();      //弹出堆顶元素
+      
+
+stack  栈  
+
+      size();
+      empty();
+      push();          //往栈顶添加元素 
+      top();           //返回栈顶元素
+      pop();           //弹出栈顶元素
+      
+deque  双端队列(队头队尾都可以插入和删除且支持随机访问 速度很慢)    #include<deque>  
+
+      size();
+      empty();
+      clear();
+      front();
+      back();
+      push_back() / pop_back();
+      push_front() / pop_front();
+      begin() / end(); 
+      
+set, map ,multiset, multimap  基于平衡二叉树来实现,动态维护有序序列
+unordered_ser, unordered_map, unordered_multiset, unordered_multimap  基于哈希表来实现
+bitset  压位 */
+
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+
+
+using namespace std;
+
+int main()
+{
+  
+}
