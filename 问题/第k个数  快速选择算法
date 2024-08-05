@@ -19,9 +19,10 @@ int quick_sort(int l,int r,int k)
     while (q[--j]>x);
     if(i<j) swap(q[i],q[j]);
   }
-  int sl=j-l+1;
-  if(k<=sl) return quick_sort(l,j,k);
-  else return quick_sort(j+1,r,k-sl);
+   // 如果第 k 大的数在左半边，则递归左半边寻找
+    if (k <= j) return quick_sort(l, j, k);
+    // 否则递归右半边
+    return quick_sort(j + 1, r, k);
 }
 int main()
 {
