@@ -24,7 +24,7 @@ pair<int, int>  存储二元组  //类似一个数组中每一个p[]可以存储
 
 string  字符串  
 
-      size();    //同上
+      size(); / length();    //同上
       empty();
       clear();  
       substr()            //substr(3, 2); 返回下标从 3 开始 长度为 2 的字串 也可省略 2 即从下标为 3 开始返回整个字串
@@ -38,9 +38,9 @@ queue  队列    //没有clear函数   #include <queue>
       front();                  //返回对头元素  
       back();                  //返回队尾元素
       pop();                  //弹出队头元素
-      q = queue<int>();     //通过重新构造来实现清空queue   #include <queue>
+      q = queue<int>();     //通过重新构造来实现清空queue  
       
-priority_queque  优先队列(堆)    //默认大根堆  
+priority_queque  优先队列(堆)    //默认大根堆   #include <queue>
 
       priority_queue<int> heap;  //加上  #include <vector>   然后  prority_queue<int, vector<int>, great<int>>heap; 来实现小根堆
       push();       //往堆里插入元素  可以通过 heap.push(- x); 来实现小根堆
@@ -67,9 +67,32 @@ deque  双端队列(队头队尾都可以插入和删除且支持随机访问 �
       push_front() / pop_front();
       begin() / end(); 
       
-set, map ,multiset, multimap  基于平衡二叉树来实现,动态维护有序序列
-unordered_ser, unordered_map, unordered_multiset, unordered_multimap  基于哈希表来实现
-bitset  压位 */
+set ,map ,multiset, multimap  基于平衡二叉树来实现,动态维护有序序列  大部分时间复杂度都是 O(log n)  #include(set / map ...)
+  都支持 size(); empty(); clear()； begin() / end()    ++  --   返回前驱和后继;  
+      set / multiset
+             set<int> s;    //set中不可有重复的元素
+             multiset<int> ms;    //multiset中可以有重复的元素
+             insert();      //插入一个数
+             find();      //查找一个数
+             count();     //返回某一个数的个数
+             erase();
+               (1) 输入是一个数x，删除所有x     O(k + log n)  k是x的个数
+               (2) 输入是一个迭代器，删除这个迭代器
+             lower_bound() / upper_bound() 
+                lower_bound();    //返回大于等于x的最小的迭代器   不存在则返回end
+                uppeR_bound();     //返回大于x的最小的迭代器   不存在则返回end
+       map / multimap
+              insert();    插入的是一个pair
+              erase();     输入的参数是pair或迭代器
+              find();
+              
+
+
+unordered_set, unordered_map, unordered_multiset, unordered_multimap  基于哈希表来实现   #include<unrdered_set / .....>
+              和上面类似，增删改查的时间复杂度都是O(1)
+              不支持 lower_bound() / upper_bound(), 迭代器的 ++ --
+
+bitset  压位 */   一个字节=8个位  进行压缩
 
 #include <iostream>
 #include <cstdio>
