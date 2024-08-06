@@ -32,6 +32,7 @@ long long merge_sort(int l,int r)
   while(j <= r)   temp[k++] = q[j++];
   //物归原主
   for(int i = l,j = 0;i <= r;i ++,j ++)  q[i] = temp[j];
+return res;
 }
 int main()
 {
