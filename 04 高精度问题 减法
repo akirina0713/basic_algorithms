@@ -21,7 +21,7 @@ vectot<int>sub(vector<int>&A, vector<int>&B)//直接引用，将数组copy一遍
     int t = 0;
     for(int i=0,t=0;i<A.size();i++)
     {
-      t-=A[i];
+      t = A[i] - t;
       if(i<B.size()) t-=B[i];
       C.push_back((t+10)%10);   //把t>=0和t<0时的情况合二为一：   t>=0时 （t+10）%10还是=t，t<0时 t=（t+10）
       if (t<0) t=1;   //判断是否要借位
