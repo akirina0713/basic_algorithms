@@ -19,7 +19,7 @@ vectot<int>sub(vector<int>&A, vector<int>&B)//直接引用，将数组copy一遍
 {
     vector <int>C;
     int t = 0;
-    for(int i=0,t=0;i<A.size();i++)
+    for(int i=0;i<A.size();i++)
     {
       t = A[i] - t;
       if(i<B.size()) t-=B[i];
