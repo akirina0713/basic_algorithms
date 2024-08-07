@@ -6,9 +6,9 @@ using namespace std;
 //C=A+B
 vectot<int>add(vector<int>&A, vector<int>&B)//直接引用，将数组copy一遍 提高效率
 {
-    vector C;
+    vector <int>C;
     int t=0;   //进位
-    for(int i=0;i<A.size()||i<b.size();i++)
+    for(int i=0;i<A.size()||i<B.size();i++)
     {
       if(i<A.size()) t+=A[i];
       if(i<B.size()) t+=B[i];
@@ -22,10 +22,10 @@ vectot<int>add(vector<int>&A, vector<int>&B)//直接引用，将数组copy一遍
 int main ()
 {
   string a,b;
-  vector<int>A,B;
+  vector<int>A,B;  //开辟动态数组A和B来存储输入的a和b！
     cin>>a>>b;     //a="123456"
-    for(int i=a.size()-1;i>=0;i--) A.push_back(a[i]-'0');     //从个位数开时存，倒着存   A=[6,5,4,3,2,1]
-    for(int i=b.size()-1;i>=0;i--) B.push_back(b[i]-'0');
+    for(int i=a.size()-1;i>=0;i--) A.push_back(a[i]-'0');     //从个位数开时存，倒着存   A=[6,5,4,3,2,1]   是将a存入动态数组A中！
+    for(int i=b.size()-1;i>=0;i--) B.push_back(b[i]-'0');     
     
     auto C=add(A,B);   //auto  编译器自动推断变量的类型
     for(int i=C.size()-1;i>=0;i--) printf("%d",C[i]);
