@@ -8,30 +8,38 @@
 //    如   0，0，0，0，0....0   a1为在[1,1]区间中加了a1  a2为在[2,2]区间中加了a2  .....  an 为在[n,n]区间中加了an
 #include<iostream>
 using namespace std;
-const int N=100010;
+const int N = 100010;
+int n, m;
+int s[N], b[N];
 
-int n,m;
-int a[N],b[N];
-
-void insert(int l,int r,int c)   
-{
-  b[l]+=c;
-  b[r+1]-=c;   
-}
 
 int main()
 {
-  scanf("%d%d",&n,&m);
-  for(int i=1;i<=n;i++) scanf("%d",&a[i]);
-  for(int i=1;i<=n;i++) insert(i,i,a[i]); //差分数组的构建
-
-  while (m--)
-  {
-    int l,r,c;
-    scanf("%d%d%d",&l,&r,&c);
-    insert(l,r,c);
-  }
-  for (int i=1;i<=n;i++) b[i]+=b[i-1];  //前缀和       
-  for (int i=1;i<=n;i++) printf("%d",b[i]);
-  return 0;
+    scanf("%d%d", &n, &m);
+    for(int i = 1; i <= n; i ++) scanf("%d", &s[i]);
+    for(int i = 1; i <= n; i ++) b[i] = s[i] - s[i - 1];   //构造差分数组目的是为了在前缀和中通过b里的某个元素修改后去修改s后面的值
+    //构造了差分数组后就已经有了比如s[3]=b[3]+b[2]+b[1];这种前缀和关系。
+    //只不过现在不用，因为为了去修改s的值我们还需要对中间的b进行修改，所以接下来
+    //是先对b修改，再调用s[3]=b[3]+b[2]+b[1];
+    while(m --)
+    {
+        int l, r ,c;
+        scanf("%d%d%d", &l, &r, &c);
+        b[l]+=c;//将l和以后加c
+        b[r+1]-=c;//将r之后-c
+    }
+    
+       //调用s[3]=b[3]+b[2]+b[1];这种前缀和运算。
+    for (int i = 1; i <= n; i++)
+    {
+        s[i] = b[i] + s[i - 1];    //前缀和运算
+        printf("%d ", s[i]);
+    }
+    //前缀和运算s[3]=b[3]+b[2]+b[1] 因为前面已经构造了差分数组所以此时一定是成立的 //而且如果 中间的某个b不变的话那么s 就不会变。
+    // s[3]=b[3]+b[2]+b[1] 
+    //s[4]=b[4]+b[3]+b[2]+b[1]
+    //他们可以直接写成这个样子
+    //那么对中间的b[3] 修改了就是对s[3] 之后的值都修改了
+    //这种。
+    return 0;
 }
