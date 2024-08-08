@@ -70,7 +70,7 @@ int main()
         alls.push_back(r);  //把所有下标放进了alls区间中   
       }
     //去重
-  sort(alls.beging(),alls.end());
+  sort(alls.begin(),alls.end());
   alls.erase(unique(alls.begin(),alls.end()),alls.end());     //unique函数：将区间中所有的非重复元素排序，返回的是新数组的元素的最后一个位置，将所有的重复元素排至区间末尾
 
 //处理插入
