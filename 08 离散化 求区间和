@@ -86,7 +86,7 @@ for(auto item : add)
  for(auto item : query)
   {
     int l = find(item.first), r = find(item.second) ;
-    cout << s[r] - s[l-1] << end;
+    cout << s[r] - s[l-1] << endl;
   }
   return 0;
 }
