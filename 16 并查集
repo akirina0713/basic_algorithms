@@ -37,7 +37,7 @@ void merge(int a, int b)
 int main()
 {
   scamnf("%d%d",&n, &m);
-  for(int = 0; i <= n; i++) p[i] = i;
+  for(int = 1; i <= n; i++) p[i] = i;
   while(m --)
   {
     char op[2];
