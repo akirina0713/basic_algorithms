@@ -18,13 +18,13 @@ using namespace std;
 
 const int N = 100010;
 int n, m;
-int heap[N], size;//size 是堆的长度，下标从1开始
+int heap[N], cn;//cn 是堆的长度，下标从1开始
 
 void down(int u);
 {
     int t = u;  //t记录最小点的编号
-    if(u * 2 <= size && heap[u * 2] < heap[t])  t = u * 2;
-    if(u * 2 + 1 <= size && heap[u * 2 + 1] < heap[t]  t = u * 2 + 1;
+    if(u * 2 <= cn && heap[u * 2] < heap[t])  t = u * 2;
+    if(u * 2 + 1 <= cn && heap[u * 2 + 1] < heap[t]  t = u * 2 + 1;
     if(u != t)   //如果待调整点不是最小的   3个点中最小的 ：根 左儿子 右儿子
     {
         swap(heap[u],heap[t]);    //和最小的交换
@@ -46,15 +46,14 @@ int main()
 {
   scanf("%d%d", &n, &m);
   for(int i = 1;i <= n; i ++) scanf("%d", &heap[i]);
-  size = n;
+  cn = n;
 
   for(int i = n / 2; i; i --) down(i);   //从第一个非叶节点开始，从右到左，从下到上处理每个节点
 
   while(m --)   //输出前m小的数
   {
     printf("%d ", heap[1]);  
-    heap[1] = heap[szie];  //输出完一个后进行调整。然后输出下一个数
-    size --;
+    heap[1] = heap[cn --];  //输出完一个后进行调整。然后输出下一个数
     down(1);
   }
   return 0;
