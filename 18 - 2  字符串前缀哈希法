@@ -22,12 +22,12 @@ typedef unsigned long long ULL;
 const int N = 100010, P = 131;   //P 一般取 131 比较好，不易出现重复现象 
 int n, m;
 char str[N];
-ULL h[N], p[N];   //用p[N] 来存储  pow(P, r - l + 1)
+ULL h[N], p[N];   //用p[N] 来存储  pow(P, r - l + 1)  pow(x,y)函数，得到x的y次方
 
 ULL get(int l, int r)
 {
   return h[r] - h[l-1] * p[r - l + 1];  // l 到 r 之间的哈希值     
-  //区间和公式的理解: ABCDE 与 ABC 的前三个字符值是一样，只差两位，乘上P的二次方把 ABC 变为 ABC00，再用 ABCDE - ABC00 得到 DE 的哈希值。
+  //区间和公式的理解: ABCDE 与 ABC 的前三个字符值是一样，只差两位，乘上P的二次方把 ABC 变为 ABC00，再用 ABCDE - ABC00 得到 DE 的哈希值。  h[r]=h[r-1]*P+str[r]，所以这不是单独 r 的哈希值，而是整个字符串到 r 时的哈希值
 }
 
 int main()
@@ -37,7 +37,7 @@ int main()
   for(int i = 1; i <= n; i++)
   {
     p[i] = p[i - 1] * P;
-    h[i] = h[i-1] * P + str[i];  //类似前缀和
+    h[i] = h[i-1] * P + str[i];  //类似前缀和(求的是整个字符串的哈希值，即整个字符串到 i 的哈希值，不是单独 i 的哈希值)
   }
   while(m --)
   {
