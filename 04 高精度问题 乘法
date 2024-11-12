@@ -13,7 +13,8 @@ vector<int>mul(vector<int>&A,int b)
     C.push_back(t%10);
     t/=10;
   }
-    while(C.size()>1 && C.back()==0) C.pop_back();
+    while(C.size()>1 && C.back()==0) C.pop_back();  //比如说A = 123456 ，b = 0 相乘结果是000000，应该是0的，
+//所以要判断一下vector这个变长数组末尾是不是有多个0，然后把他们去掉，最后逆序输出就不会有多的0了
     return C;
   
 }
