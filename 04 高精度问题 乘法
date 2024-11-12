@@ -5,7 +5,7 @@ using namespace std;
 //A*b
 vector<int>mul(vector<int>&A,int b)
 {
-  vector C;
+  vector <int>C;
   int t=0;
   for(int i=0;i<A.size()||t;i++)
   {
